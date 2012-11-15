@@ -9,5 +9,9 @@ feature 'Creating Record File' do
 	click_button 'Create Record'
 	page.should have_content('Record has been created.')
 	
+	record = Record.find_by_specialty("TextMate 2")
+	page.current_url.should == record_url(record)
+	title = "TextMate 2 - Records - RecordMaster"
+	find("title").should have_content(title)
     end
 end
